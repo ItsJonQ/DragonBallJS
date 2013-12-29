@@ -19,15 +19,15 @@ var startGame = function() {
     a.charge();
     b.charge();
 
-    a.fire();
-    b.charge();
-
     a.charge();
     b.charge();
 
     a.charge();
+    b.charge();
+
+    a.dragon();
     b.dragon();
-    
+
 }
 
 startGame();

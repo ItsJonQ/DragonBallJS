@@ -49,6 +49,9 @@ var compareMoveType = function(moveA, moveB) {
 	switch(moveNameA) {
 		case 'charge' :
 		switch(moveNameB) {
+			case 'block' :
+			return moveA.player.name + ' charged, and ' + moveB.player.name + ' blocked';
+			break;
 			case 'charge' :
 			return 'Both players charged.';
 			break;
@@ -66,12 +69,15 @@ var compareMoveType = function(moveA, moveB) {
 
 		case 'dragon' :
 		switch(moveNameB) {
+			case 'block' :
+			return moveB.player.name + " blocked, but it doesn't matter.. cause " + moveB.player.name + ' DRAGONED!!!';
+			break;
 			// case 'charge' :
 			// return 'Both players charged.';
 			// break;
-			// case 'dragon' :
-			// return moveB.player.attack(moveA.player, moveB.move.damage);
-			// break;
+			case 'dragon' :
+			return 'Both players DRAGONED!!! It was epic...';
+			break;
 			case 'dodge' :
 			return moveA.player.name + ' DRAGONED!... but ' + moveB.player.name + ' dodged';
 			break;

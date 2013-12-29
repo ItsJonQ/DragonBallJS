@@ -83,10 +83,6 @@ Player.prototype.initMove = function(callback) {
 	}
 };
 
-Player.prototype.block = function() {
-
-};
-
 //// NEW STUFF
 Player.prototype.chargeCheck = function(attack) {
 	if(attack !== undefined) {
@@ -117,6 +113,14 @@ Player.prototype.charge = function() {
 		return this.name + ' charged.';
 	});
 };
+
+Player.prototype.block = function() {
+	this.initMove(function() {
+		this.moves.push(this.movelist.block);
+		return this.name + ' blocked.';
+	});
+};
+
 
 Player.prototype.dragon = function() {
 	var dragon = this.movelist.attack.dragon;
