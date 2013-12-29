@@ -65,7 +65,7 @@ Player.prototype.addWin = function() {
 Player.prototype.initMove = function(callback) {
     if(callback !== undefined && typeof callback === 'function') {
         callback.call(this, callback);
-        analyzeMoves();
+        // return analyzeMoves();
     } else {
         return false;
     }
@@ -118,6 +118,7 @@ Player.prototype.status = function() {
 Player.prototype.addToBattle = function() {
     if(arenaPlayerCount() < 2) {
         arena.push(this);
+        this.gamesPlayed = this.gamesPlayed + 1;
         return true;
     } else {
         return false;
@@ -194,10 +195,10 @@ var arenaForEachPlayer = function(callback) {
     }
 }
 
+var moveCompare = [];
+
 var analyzeMoves = function() {
     var output = false;
-    var moveCompare = [];
-
     arenaForEachPlayer(function(player) {
         var moves = player.moves;
         if(moves.length !== 0) {
@@ -207,14 +208,12 @@ var analyzeMoves = function() {
             output = 'Awaiting '+player.name+' to make a move.';
         }
     });
-
     if(moveCompare.length === 2) {
-        return console.log(compareMoves(moveCompare[0], moveCompare[1]));
+        console.log(compareMoves(moveCompare[0], moveCompare[1]));
+        moveCompare.length = 0;
     } else {
         return console.log('Awaiting both players to make their moves.');
     }
-
-    return false;
 };
 
 var compareMoveIndex = function(moveA, moveB) {
