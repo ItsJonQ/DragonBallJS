@@ -63,6 +63,23 @@ var compareMoveType = function(moveA, moveB) {
 			break;
 		}
 		break;
+
+		case 'dragon' :
+		switch(moveNameB) {
+			// case 'charge' :
+			// return 'Both players charged.';
+			// break;
+			// case 'dragon' :
+			// return moveB.player.attack(moveA.player, moveB.move.damage);
+			// break;
+			case 'dodge' :
+			return moveA.player.name + ' DRAGONED!... but ' + moveB.player.name + ' dodged';
+			break;
+			// case 'fire' : 
+			// return moveB.player.attack(moveA.player, moveB.move.damage);
+			// break;
+		}
+		break;
 	}
 	return true;
 };

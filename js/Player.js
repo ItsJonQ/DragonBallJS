@@ -91,10 +91,19 @@ Player.prototype.block = function() {
 Player.prototype.chargeCheck = function(attack) {
 	if(attack !== undefined) {
 		if(this.charges >= attack.charge) {
+			this.useCharge(attack);
 			return true;
 		} else {
 			return false;
 		}
+	} else {
+		return false;
+	}
+};
+
+Player.prototype.useCharge = function(attack) {
+	if(attack !== undefined) {
+		this.charges = this.charges - attack.charge;
 	} else {
 		return false;
 	}
